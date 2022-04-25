@@ -26,7 +26,7 @@ SECRET_KEY = '8y&v3uipe_wy4h@tinh!l7qx)4lka#ib=(e#0a=5yxbrs_5frk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,3 +125,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'videos/') # 'data' is my media folder
 MEDIA_URL = '/videos/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'

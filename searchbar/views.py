@@ -44,7 +44,7 @@ def videos(request):
                     res=stt.recognize(audio=f, content_type='audio/mp3', model='en-US_NarrowbandModel', inactivity_timeout=-1, timestamps=True).get_result()
                     print(res)
                     timestamp.append(res)
-                os.remove("E:\search\PMD.mp3")
+                os.remove("././PMD.mp3")
 
                     
             # print(res)

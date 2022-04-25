@@ -40,7 +40,7 @@ def videos(request):
                 authenticator = IAMAuthenticator(apikey)
                 stt = SpeechToTextV1(authenticator=authenticator)
                 stt.set_service_url(url)
-                with open("E:\search\PMD.mp3","rb") as f:
+                with open("././PMD.mp3","rb") as f:
                     res=stt.recognize(audio=f, content_type='audio/mp3', model='en-US_NarrowbandModel', inactivity_timeout=-1, timestamps=True).get_result()
                     print(res)
                     timestamp.append(res)

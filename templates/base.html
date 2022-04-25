@@ -1,0 +1,286 @@
+{%load crispy_forms_tags %} 
+<html>
+<head>
+<meta charset="UTF-8">
+<title>YouTube</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<link rel="stylesheet" href="node_modules/mdbootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="node_modules/mdbootstrap/css/style.css">
+<style>
+    .styled-table {
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      width: 1200px;
+      }
+      .styled-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+     }
+    .styled-table th,
+    .styled-table td {
+     padding: 12px 15px;
+     }
+     .styled-table tbody tr {
+      border-bottom: 1px solid #dddddd;
+      }
+  
+      .styled-table tbody tr:nth-of-type(even) {
+          background-color: #f3f3f3;
+      }
+  
+      .styled-table tbody tr:last-of-type {
+          border-bottom: 2px solid #009879;
+      }
+      .styled-table tbody tr.active-row {
+      font-weight: bold;
+      color: #009879;
+      }
+  </style>
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'}),_trfd.push({'ap':'cpbh-mt'},{'server':'p3plmcpnl487010'},{'id':'8437534'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">You Tube</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home</a>
+            <a class="nav-item nav-link" href="#">Video</a>
+            <a class="nav-item nav-link" href="#">Contact Us</a>
+            <!-- <a class="nav-item nav-link disabled" href="#">Disabled</a> -->
+          </div>
+        </div>
+      </nav>
+<div class="container w-50 mt-5">
+<h1>Videos</h1>
+<form action="" method="POST">
+{% csrf_token %}
+{{ form|crispy }}
+<!-- <br> -->
+<span><button class="btn btn-primary" type="submit" >Search  </button></span>
+<!-- <button onClick="window.location.reload();">Refresh Page</button>s -->
+</form>
+</div>
+<div class="container w-100">
+    <table class="styled-table ">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Video </th>
+          <th scope="col">Time Stamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if timestamp %}
+        {% for video,time in result %}
+        <tr>
+          <td >{{ video.name}}</td>
+          <td>{{ video.description }}</td>
+          <td><video width='400' height="200" controls>
+            <source src='/videos/{{ video.videofile }}' type='video/mp4'>
+            Your browser does not support the video tag.
+            </video>
+            </td>
+            {% if time %}
+            <td>{{time}}</td>
+            {% else %}
+            <td> None</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+            
+        {% else %}
+        <table class="styled-table ">
+
+            {% for video in desc %}
+            <tr>
+            <td>{{ video.name}}</td>
+            <td>{{ video.description }}</td>
+            <td><video width='400' height="200" controls>
+            <source src='/videos/{{ video.videofile }}' type='video/mp4'>
+            Your browser does not support the video tag.
+            </video>
+            </td>
+            <td>None</td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+      </tbody>
+    </table> 
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: white ; color: black;">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+    
+        <div class="col-md-4 mx-auto">
+  
+          <!-- Content -->
+          <!-- <h5 class=" mt-3 mb-4">Welcome </h5> -->
+          <p> </p>
+  
+        </div>
+     
+  
+        <hr class="clearfix w-100 d-md-none">
+        <div class="col-md-2 mx-auto">
+  
+          
+          <h5 class=" mt-3 mb-4" style="color: black;">YouTube</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              <a href="#">About Us</a>
+            </li>
+            <li>
+              <a href="#">Terms & Conditions</a>
+            </li>
+            <li>
+              <a href="#">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#!">FAQ</a>
+            </li>
+          </ul>
+  
+        </div>
+  
+        <hr class="clearfix w-100 d-md-none">
+  
+  
+        <div class="col-md-2 mx-auto">
+  
+          
+          <h5 class=" mt-3 mb-4">Contact us</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Blog</a>
+            </li>
+            <li>
+              <a href="#!">Forum</a>
+            </li>
+            <li>
+              <a href="#">Email</a>
+            </li>
+            <li>
+              <a href="#">Linked In</a>
+            </li>
+          </ul>
+  
+        </div>
+  
+  
+        <hr class="clearfix w-100 d-md-none">
+  
+        <div class="col-md-2 mx-auto">
+  
+         
+          <h5 class=" mt-3 mb-4">Connect With Us</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              <a href="#">Facebook</a>
+            </li>
+            <li>
+              <a href="#">Instagram</a>
+            </li>
+            <li>
+              <a href="#">LinkedIn</a>
+            </li>
+            <li>
+              <a href="#">LinkedIn</a>
+            </li>
+          </ul>
+  
+        </div>
+    
+  
+      </div>
+    
+  
+    </div>
+  
+  
+    <hr>
+  
+  
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Register for free</h5>
+      </li>
+      <li class="list-inline-item">
+        <a href="" class="btn btn-danger btn-rounded">Sign up!</a>
+      </li>
+    </ul>
+    
+  
+    <hr>
+  
+  
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a class="btn-floating btn-fb mx-1">
+          <i class="fab fa-facebook-f"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-tw mx-1">
+          <i class="fab fa-twitter"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-gplus mx-1">
+          <i class="fab fa-google-plus-g"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-li mx-1">
+          <i class="fab fa-linkedin-in"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-dribbble mx-1">
+          <i class="fab fa-dribbble"> </i>
+        </a>
+      </li>
+    </ul>
+  
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+      <a href="#"> You Tube </a>
+    </div>
+  
+  
+  </footer>
+</body> 
+</html>
